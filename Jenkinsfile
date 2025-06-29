@@ -27,6 +27,8 @@ pipeline {
         stage('Maven Build') {
             steps {
                 echo "JAVA_HOME is set to: ${env.JAVA_HOME}"
+                sh 'export JAVA_HOME=/usr/lib/jvm/java-17-amazon-corretto.x86_64'
+                sh 'export PATH=$JAVA_HOME/bin:$PATH'
                 sh 'mvn clean package'
             }
         }
