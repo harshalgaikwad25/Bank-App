@@ -9,7 +9,8 @@ pipeline {
     stages {
         stage('Git checkout ') {
             steps {
-                checkout scmGit(branches: [[name: '*/start']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/harshalgaikwad25/Bank-App.git']])
+                checkout([$class: 'GitSCM', branches: [[name: '*/start']], userRemoteConfigs: [[url: 'https://github.com/harshalgaikwad25/Bank-App.git', credentialsId: 'github-cred']]])
+
             }
         }
         stage ('maven build') {
