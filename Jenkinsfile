@@ -18,7 +18,7 @@ pipeline {
                     branches: [[name: '*/start']],
                     userRemoteConfigs: [[
                         url: 'https://github.com/harshalgaikwad25/Bank-App.git',
-                        credentialsId: 'github-cred'
+                        credentialsId: 'github-text'
                     ]]
                 ])
             }
