@@ -6,6 +6,10 @@ pipeline {
         jdk 'jdk17'
         maven 'maven3'
     }
+    environment {
+        JAVA_HOME = '/usr/lib/jvm/java-17-amazon-corretto.x86_64'
+        PATH = "${env.JAVA_HOME}/bin:${env.PATH}" 
+    }
 
     stages {
         stage('Git checkout') {
