@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+
     tools {
         git 'git'
         jdk 'jdk17'
@@ -8,16 +8,23 @@ pipeline {
     }
 
     stages {
-        stage('Git checkout ') {
+        stage('Git checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/start']], userRemoteConfigs: [[url: 'https://github.com/harshalgaikwad25/Bank-App.git', credentialsId: 'github-cred']]])
-
+                checkout([$class: 'GitSCM',
+                    branches: [[name: '*/start']],
+                    userRemoteConfigs: [[
+                        url: 'https://github.com/harshalgaikwad25/Bank-App.git',
+                        credentialsId: 'github-cred'
+                    ]]
+                ])
             }
         }
-        stage ('maven build') {
+
+        stage('Maven Build') {
             steps {
                 sh 'mvn clean package'
             }
         }
-}
-}
+    } // ← this was missing
+
+} // ← this was also missing
