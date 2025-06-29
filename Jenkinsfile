@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        JAVA_HOME = '/usr/lib/jvm/java-17-amazon-corretto.x86_64'
-        PATH = "${env.JAVA_HOME}/bin:${env.PATH}" 
+        JAVA_HOME = "${tool 'jdk17'}"
+        PATH = "${JAVA_HOME}/bin:${env.PATH}"
     }
     tools {
         git 'git'
@@ -26,6 +26,7 @@ pipeline {
 
         stage('Maven Build') {
             steps {
+                echo "JAVA_HOME is set to: ${env.JAVA_HOME}"
                 sh 'mvn clean package'
             }
         }
