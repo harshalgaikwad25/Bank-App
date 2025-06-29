@@ -12,5 +12,10 @@ pipeline {
                 checkout scmGit(branches: [[name: '*/start']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/harshalgaikwad25/Bank-App.git']])
             }
         }
+        stage ('maven build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
 }
 }
